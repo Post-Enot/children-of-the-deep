@@ -48,6 +48,16 @@ namespace IUP.ChildrenOfTheDeep
             HandleDirectionInput();
         }
 
+        private void OnEnable()
+        {
+            EnableInput(); // TEMP.
+        }
+
+        private void OnDisable()
+        {
+            DisableInput(); // TEMP.
+        }
+
         private void InitComponentLinks()
         {
             _inputActions = new InputActions();
