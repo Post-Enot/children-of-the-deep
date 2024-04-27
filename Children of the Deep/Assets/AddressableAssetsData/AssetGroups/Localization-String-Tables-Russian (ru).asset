@@ -17,7 +17,7 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: b83f6d461bef29f46adc8fa0d363a0dc
   m_SerializeEntries:
-  - m_GUID: 7d3bf38697692ae45bf0f0b00f85183f
+  - m_GUID: 831d290a7f80cfa47b65c77db3ffee0a
     m_Address: Dialogues_ru
     m_ReadOnly: 1
     m_SerializedLabels:

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b57cee1a0299a9a418409cde96556202
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
+  useAddressableAssets: 0
+  UseUnityLocalisationSystem: 1
+  unityLocalisationStringTableCollection: {fileID: 11400000, guid: 2b069cb0dbfd9a74a8dae93dda45878a,
+    type: 2}
