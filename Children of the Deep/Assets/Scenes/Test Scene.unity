@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b1b4fc78cb04440920bc232b01d06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MovementMode>k__BackingField: 0
   <WalkSpeed>k__BackingField: 2
   <RunSpeed>k__BackingField: 5
 --- !u!114 &386400217
