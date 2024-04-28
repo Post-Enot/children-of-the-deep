@@ -22,6 +22,17 @@ namespace IUP.ChildrenOfTheDeep
                 return RunSpeed;
             }
         }
+        public MovementMode ActualMovementMode
+        {
+            get
+            {
+                if ((MovementMode == MovementMode.Walk) ^ AltMovementModeEnabled)
+                {
+                    return MovementMode.Walk;
+                }
+                return MovementMode.Run;
+            }
+        }
         public bool AltMovementModeEnabled => _inputActions.CharacterControl.AltMovementMode.inProgress;
 
         private InputActions _inputActions;

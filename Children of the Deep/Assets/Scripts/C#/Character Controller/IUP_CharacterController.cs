@@ -6,9 +6,13 @@ namespace IUP.ChildrenOfTheDeep
     public sealed class IUP_CharacterController : MonoBehaviour
     {
         [field: SerializeField] public float Gravity { get; private set; } = Physics.gravity.y;
+        [SerializeField][Range(0.0f, 360.0f)] private float _rotationYOnAwake = 180.0f;
 
         public Vector3 Velocity => _velocity;
         public bool IsGrounded => _characterController.isGrounded;
+        public bool HasHorizontalMovement => (Velocity.x != 0.0f) || (Velocity.z != 0.0f);
+        public bool HasVerticalMovement => Velocity.y != 0.0f;
+        public float RotationY { get; private set; }
 
         private CharacterController _characterController;
         private Vector3 _velocity;
@@ -31,6 +35,7 @@ namespace IUP.ChildrenOfTheDeep
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
+            RotationY = _rotationYOnAwake;
         }
 
         private void FixedUpdate()
@@ -38,6 +43,7 @@ namespace IUP.ChildrenOfTheDeep
             ApplyGravity();
             ApplyMotion();
             ResetVerticalVelocityIfGrounded();
+            UpdateRotationY();
         }
 
         private void ApplyGravity()
@@ -56,6 +62,19 @@ namespace IUP.ChildrenOfTheDeep
             if (IsGrounded)
             {
                 _velocity.y = 0.0f;
+            }
+        }
+
+        private void UpdateRotationY()
+        {
+            if (HasHorizontalMovement)
+            {
+                float rotationY_Radians = Mathf.Atan2(Velocity.x, Velocity.z);
+                RotationY = Mathf.Rad2Deg * rotationY_Radians;
+                if (RotationY < 0.0f)
+                {
+                    RotationY = 360.0f + RotationY;
+                }
             }
         }
     }
