@@ -3,11 +3,14 @@
 namespace IUP.ChildrenOfTheDeep
 {
     [RequireComponent(typeof(CharacterController))]
+    [AddComponentMenu("IUP/IUP Character Controller")]
     public sealed class IUP_CharacterController : MonoBehaviour
     {
-        [field: SerializeField] public float Gravity { get; private set; } = Physics.gravity.y;
+        [Header("Params:")]
+        [SerializeField] private float _gravity = Physics.gravity.y;
         [SerializeField][Range(0.0f, 360.0f)] private float _rotationYOnAwake = 180.0f;
 
+        public float Gravity => _gravity;
         public Vector3 Velocity => _velocity;
         public bool IsGrounded => _characterController.isGrounded;
         public bool HasHorizontalMovement => (Velocity.x != 0.0f) || (Velocity.z != 0.0f);
