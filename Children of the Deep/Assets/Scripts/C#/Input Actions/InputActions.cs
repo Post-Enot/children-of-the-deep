@@ -55,6 +55,15 @@ namespace IUP.ChildrenOfTheDeep.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Open Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""9678fb75-f0c9-4694-b699-2ea18e755b4b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -189,6 +198,17 @@ namespace IUP.ChildrenOfTheDeep.Input
                     ""action"": ""Switch Movement Mode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cdea06b-f4fa-427d-b226-0160226a70d7"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Open Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -200,6 +220,7 @@ namespace IUP.ChildrenOfTheDeep.Input
             m_CharacterControl_Direction = m_CharacterControl.FindAction("Direction", throwIfNotFound: true);
             m_CharacterControl_AltMovementMode = m_CharacterControl.FindAction("Alt Movement Mode", throwIfNotFound: true);
             m_CharacterControl_SwitchMovementMode = m_CharacterControl.FindAction("Switch Movement Mode", throwIfNotFound: true);
+            m_CharacterControl_OpenInventory = m_CharacterControl.FindAction("Open Inventory", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -264,6 +285,7 @@ namespace IUP.ChildrenOfTheDeep.Input
         private readonly InputAction m_CharacterControl_Direction;
         private readonly InputAction m_CharacterControl_AltMovementMode;
         private readonly InputAction m_CharacterControl_SwitchMovementMode;
+        private readonly InputAction m_CharacterControl_OpenInventory;
         public struct CharacterControlActions
         {
             private @InputActions m_Wrapper;
@@ -271,6 +293,7 @@ namespace IUP.ChildrenOfTheDeep.Input
             public InputAction @Direction => m_Wrapper.m_CharacterControl_Direction;
             public InputAction @AltMovementMode => m_Wrapper.m_CharacterControl_AltMovementMode;
             public InputAction @SwitchMovementMode => m_Wrapper.m_CharacterControl_SwitchMovementMode;
+            public InputAction @OpenInventory => m_Wrapper.m_CharacterControl_OpenInventory;
             public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -289,6 +312,9 @@ namespace IUP.ChildrenOfTheDeep.Input
                 @SwitchMovementMode.started += instance.OnSwitchMovementMode;
                 @SwitchMovementMode.performed += instance.OnSwitchMovementMode;
                 @SwitchMovementMode.canceled += instance.OnSwitchMovementMode;
+                @OpenInventory.started += instance.OnOpenInventory;
+                @OpenInventory.performed += instance.OnOpenInventory;
+                @OpenInventory.canceled += instance.OnOpenInventory;
             }
 
             private void UnregisterCallbacks(ICharacterControlActions instance)
@@ -302,6 +328,9 @@ namespace IUP.ChildrenOfTheDeep.Input
                 @SwitchMovementMode.started -= instance.OnSwitchMovementMode;
                 @SwitchMovementMode.performed -= instance.OnSwitchMovementMode;
                 @SwitchMovementMode.canceled -= instance.OnSwitchMovementMode;
+                @OpenInventory.started -= instance.OnOpenInventory;
+                @OpenInventory.performed -= instance.OnOpenInventory;
+                @OpenInventory.canceled -= instance.OnOpenInventory;
             }
 
             public void RemoveCallbacks(ICharacterControlActions instance)
@@ -324,6 +353,7 @@ namespace IUP.ChildrenOfTheDeep.Input
             void OnDirection(InputAction.CallbackContext context);
             void OnAltMovementMode(InputAction.CallbackContext context);
             void OnSwitchMovementMode(InputAction.CallbackContext context);
+            void OnOpenInventory(InputAction.CallbackContext context);
         }
     }
 }
