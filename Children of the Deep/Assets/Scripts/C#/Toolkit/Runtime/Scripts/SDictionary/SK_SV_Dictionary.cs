@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace IUP.Toolkit.SerializableCollections
 {
-    public class SK_SV_Dictionary<TKey, TValue>
+    public class SK_SV_Dictionary<TKey, TValue> : ISerializationCallbackReceiver
     {
         [Serializable]
         public struct SKeyValuePair
